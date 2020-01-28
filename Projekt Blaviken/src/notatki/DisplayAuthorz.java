@@ -1,4 +1,4 @@
-package databases;
+package notatki;
 
 //Displaying the contents of the Authors table .
 import java.sql.Connection;

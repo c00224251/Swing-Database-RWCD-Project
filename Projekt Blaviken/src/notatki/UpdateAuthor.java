@@ -1,4 +1,4 @@
-package databases;
+package notatki;
 
 //Update an Author in the Authors table.
 import java.sql.Connection;
