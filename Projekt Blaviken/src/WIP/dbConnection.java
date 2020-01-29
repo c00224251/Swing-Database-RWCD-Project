@@ -3,19 +3,19 @@ package WIP;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.SQLException;
 
 public class dbConnection
 	{
 		public static void main(String[] args)
 			{
 				
-				String url = "localhost:port/nazwa bazy danych?unsecure SSL";
-				String user = "C00224251@itcarlow.ie";
-				String password = "1234567"; //password used at installation
+				String url = "jdbc:mysql://78.153.200.61:3306/PROJ3KT?useSSL=false";
+				String user = "PROJ3KT";
+				String password = "projekt"; //password used at installation
 				String query = "SELECT VERSION()";
 				// establish a connection to the database using getConnection()
 				try (Connection con = DriverManager.getConnection(url, user, password);
