@@ -22,14 +22,14 @@ public class dbConnection
 						Statement st = con.createStatement(); //creates a statement object for sending SQL Statements
 						ResultSet rs = st.executeQuery(query);) //Executes the SQL Statement, returns 
 																//ResultSet object(data returned by statement)
-					{	// ResultSet selects ro 0 (nothing)
+					{	// ResultSet selects row 0 (nothing)
 						if (rs.next()) // moves selection to row 1
 							{ //retrieves value of row 1
 								System.out.print(rs.getString(1));
 
 							}
 					} catch (SQLException ex) // in case of exception, log error in terminal
-					{								// v classname
+					{								// class name
 						Logger lgr = Logger.getLogger(dbConnection.class.getName());
 						lgr.log(Level.SEVERE, ex.getMessage(), ex);
 					}
