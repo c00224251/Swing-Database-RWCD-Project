@@ -13,7 +13,8 @@ public class dbConnection
 		public static void main(String[] args)
 			{
 				
-				String url = "jdbc:mysql://78.153.200.61:3306/PROJ3KT?useSSL=false";
+				//String url = "jdbc:sqlserver://localhost/PROJ3KT"; //?useSSL=false";
+				String url =  "jdbc:sqlserver://localhost;DatabaseName=PROJ3KT";
 				String user = "PROJ3KT";
 				String password = "projekt"; //password used at installation
 				String query = "SELECT VERSION()";
