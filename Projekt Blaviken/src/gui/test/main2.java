@@ -1,4 +1,4 @@
-//package gui;
+package test;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
     Date Ended:     []/02/2020
 
  */
-public class main implements ActionListener {
+public class main2 implements ActionListener {
     JPanel cards; // a panel that uses CardLayout
     // Main Stuff to Edit
     final static String projectName = "name";
@@ -63,12 +63,10 @@ public class main implements ActionListener {
 
     private JPanel addButtons(JPanel panel, String name) {
 
-        for (int i = 0; i < buttons.length; i++) {
-            JButton button = new JButton(buttons[i] + " " + name);
-            button.addActionListener(this);
-            panel.setBackground(color3);
-            panel.add(button);
-        }
+        JButton button = new JButton(name);
+        button.addActionListener(this);
+        panel.setBackground(color3);
+        panel.add(button);
 
         return panel;
     }
@@ -167,7 +165,7 @@ public class main implements ActionListener {
         // frame.setIconImage(image);
 
         // Create and set up the content pane.
-        main demo = new main(); // Start the page
+        main2 demo = new main2(); // Start the page
         demo.createScenes(frame.getContentPane());
 
         frame.setMinimumSize(new Dimension(minDimension[0], minDimension[1]));
@@ -182,41 +180,3 @@ public class main implements ActionListener {
     }
 
 }// end class
-
-// public class Driver {
-
-// public static Connection connection = Connector.getConnection();
-
-// public static void main(String[] args) {
-// // TODO Auto-generated method stub
-
-// PreparedStatement pstm = null;
-// String SQL = "INSERT INTO customer(firstName, secondName, phoneNo, email,
-// address) VALUES (?,?,?,?,?)";
-
-// try {
-// connection.setAutoCommit(false);
-// pstm = (PreparedStatement) connection.prepareStatement(SQL);
-// pstm.setString(1, "John");
-// pstm.setString(2, "Doe");
-// pstm.setInt(3, 91282193);
-// pstm.setString(4, "John.doe@gmail.com");
-// pstm.setString(5, "1 main street");
-// connection.commit();
-
-// } catch (SQLException e) {
-// e.getMessage();
-// } finally {
-
-// try {
-// // pstm.close();
-// connection.setAutoCommit(true);
-// connection.close();
-// } catch (SQLException ex) {
-// System.out.println(ex.getMessage());
-// }
-// }
-
-// }
-
-// }
