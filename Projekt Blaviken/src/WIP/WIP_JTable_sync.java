@@ -19,7 +19,7 @@ public class WIP_JTable_sync extends JFrame
 			
 			// Connect to mysql
 			
-			String url = "jgbc:mysql://lovalhost:3306/project";
+			String url = "jgbc:mysql://localhost:3306/project";
 			String username = "projekt";
 			String password = "projekt";
 			String sql = "SELECT * FROM TableName";

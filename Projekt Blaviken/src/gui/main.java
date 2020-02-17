@@ -1,12 +1,25 @@
 package gui;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-//import com.mysql.jdbc.PreparedStatement;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import WIP.test1table;
 
 /*
 
@@ -80,27 +93,20 @@ public class main implements ActionListener
 		private JPanel addContent(JPanel panel, int i)
 			{
 
-				// Createing a Table
-				String[] customersColumns = {};
-				String[][] customersData = { {} };
+				// Creating a Table
+				String[] customersColumns = {"id", "FName", "LName", "Number"};
+				Object[] customersData = test1table.customerData();
 				String[] productsColumns = {};
 				String[][] productsData = { {} };
 				String[] invoicesColumns = {};
 				String[][] invoicesData = { {} };
 
-				try
-					{
-						// ------------- Here is where to put the columns and Data from the database
-						/*
-						 * customersColumns = {}; customersData = { {} }; productsColumns = {};
-						 * productsData = { {} }; invoicesColumns = {}; invoicesData = { {} };
-						 */
-
-					} catch (Exception e)
-					{
-						System.out.println("Error: " + e);
-					}
-				JTable customers = new JTable(customersData, customersColumns);
+				
+				
+				DefaultTableModel tableModel = new DefaultTableModel(customersColumns, 0);
+				tableModel.addRow(customersData);
+				
+				JTable customers = new JTable(tableModel);
 				JTable products = new JTable(productsData, productsColumns);
 				JTable invoices = new JTable(invoicesData, invoicesColumns);
 
@@ -176,8 +182,8 @@ public class main implements ActionListener
 		private static void createGui()
 			{
 
-				JFrame frame = new JFrame(projectName);// Creat A frame
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Close uppon close
+				JFrame frame = new JFrame(projectName);// Create A frame
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Terminate the app completely on close
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);// Start maximised
 				// frame.setIconImage(image);
 
