@@ -1,4 +1,5 @@
 package gui;
+
 import javax.swing.JFrame;
 
 /* notatki kurwa
@@ -9,8 +10,6 @@ import javax.swing.JFrame;
  * https://www.javatpoint.com/java-jseparator
  * robert to pefal
  */
-
-
 
 public class mainDriver extends JFrame
 	{
