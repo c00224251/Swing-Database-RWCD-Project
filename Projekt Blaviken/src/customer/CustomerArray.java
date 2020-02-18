@@ -1,4 +1,4 @@
-package WIP;
+package customer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import db.DBConnect;
 import gui.main;
 
-public class test1dbarraylist
+public class CustomerArray
 	{
-		static ArrayList<test1customer> getCustomer() //creates an ArrayList for Customer
+		protected static ArrayList<CustomerValues> getCustomer() //creates an ArrayList for Customer
 			{
-				ArrayList<test1customer> customers = new ArrayList<test1customer>(); // initialises the ArrayList
+				ArrayList<CustomerValues> customers = new ArrayList<CustomerValues>(); // initializes the ArrayList
 
-				Connection con = test1connection.getConnection(); //establish connection
+				Connection con = DBConnect.getConnection(); //establish connection
 				Statement st;
 				ResultSet rs;
-				test1customer c;
+				CustomerValues c;
 
 				try
 					{
@@ -28,11 +29,13 @@ public class test1dbarraylist
 						//ResultSet selects the data at position 0. SQL Tables begin at 1
 						while (rs.next()) // moves to next row and retrieves the values
 							{
-								c = new test1customer(
+								c = new CustomerValues(
 														rs.getInt("id"), 
 														rs.getString("fname"), 
 														rs.getString("lname"),
-														rs.getInt("number")
+														rs.getInt("number"),
+														rs.getString("email"),
+														rs.getString("address")
 													 );
 								customers.add(c); //store data in the ArrayList
 							}

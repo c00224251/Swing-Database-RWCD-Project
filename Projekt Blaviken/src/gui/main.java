@@ -19,7 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import WIP.test1table;
+import customer.CustomerData;
+import invoice.InvoiceData;
+import product.ProductData;
 
 /*
 
@@ -94,21 +96,23 @@ public class main implements ActionListener
 			{
 
 				// Creating a Table
-				String[] customersColumns = {"id", "FName", "LName", "Number"};
-				Object[] customersData = test1table.customerData();
-				String[] productsColumns = {};
-				String[][] productsData = { {} };
-				String[] invoicesColumns = {};
-				String[][] invoicesData = { {} };
+				String[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
+				Object[] customersData = CustomerData.customerData();
+				String[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
+				Object[] productsData = ProductData.productData();
+				String[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+				Object[] invoiceData = InvoiceData.invoiceData();
 
-				
-				
-				DefaultTableModel tableModel = new DefaultTableModel(customersColumns, 0);
-				tableModel.addRow(customersData);
-				
-				JTable customers = new JTable(tableModel);
-				JTable products = new JTable(productsData, productsColumns);
-				JTable invoices = new JTable(invoicesData, invoicesColumns);
+				DefaultTableModel customerTable = new DefaultTableModel(customersColumns, 0);
+				customerTable.addRow(customersData);
+				DefaultTableModel productTable = new DefaultTableModel(productsColumns, 0);
+				productTable.addRow(productsData);
+				DefaultTableModel invoiceTable = new DefaultTableModel(invoiceColumns, 0);
+				invoiceTable.addRow(invoiceData);
+
+				JTable customers = new JTable(customerTable);
+				JTable products = new JTable(productTable);
+				JTable invoices = new JTable(invoiceTable);
 
 				panel.setBackground(color2);
 				if (i == 0)
@@ -183,8 +187,8 @@ public class main implements ActionListener
 			{
 
 				JFrame frame = new JFrame(projectName);// Create A frame
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Terminate the app completely on close
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);// Start maximised
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Terminate the program completely on close
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);// Start maximized
 				// frame.setIconImage(image);
 
 				// Create and set up the content pane.
