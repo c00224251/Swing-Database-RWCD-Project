@@ -12,7 +12,7 @@ public class DisplayAuthors
 {
 
 	// database URL
-	static final String DATABASE_URL = "jdbc:mysql://localhost/books";
+	static final String DATABASE_URL = "jdbc:mysql://localhost/db";
 
 	public static void main(String args[])
 	{
@@ -30,7 +30,7 @@ public class DisplayAuthors
 			statement = connection.createStatement();
 
 			// query database
-			resultSet = statement.executeQuery("SELECT AuthorID, FirstName, LastName FROM Authors");
+			resultSet = statement.executeQuery("SELECT column1, column2, column3 FROM Table");
 
 			// process query results
 			ResultSetMetaData metaData = resultSet.getMetaData();
