@@ -1,110 +1,76 @@
-package test;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-//import com.mysql.jdbc.PreparedStatement;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-/*
+//import customer.CustomerData;
+//import invoice.InvoiceData;
+//import product.ProductData;
 
-    By:             
+class Gui implements ActionListener {
 
-    Date Started:   17/01/2020
-    Date Ended:     []/02/2020
-
- */
-public class main2 implements ActionListener {
     JPanel cards; // a panel that uses CardLayout
+    // public static Connection connection = Connector.getConnection();
     // Main Stuff to Edit
-    final static String projectName = "name";
-    final static int[] minDimension = { 1000, 700 };
+    final static String projectName = "CA3 Project";
+    final static int[] minDimension = { 500, 200 };
     final static String[] mainMenu = { "Main Menu", "Customer", "Product", "Invoice" };
     final static String[] buttons = { "Add", "Delete", "Edit" };
-    final static Color color1 = Color.blue; // Set Color of all things
-    final static Color color2 = Color.red; // Set Color of all things
-    final static Color color3 = Color.yellow; // Set Color of all things
-
-    // public static Connection connection = Connector.getConnection();
-
-    public static void main(String[] args) {
-
-        // Michals connection
-        // PreparedStatement pstm = null;
-        // String SQL = "INSERT INTO customer(firstName, secondName, phoneNo,
-        // email,address) VALUES (?,?,?,?,?)";
-
-        // try {
-        // connection.setAutoCommit(false);
-        // pstm = (PreparedStatement) connection.prepareStatement(SQL);
-        // pstm.setString(1, "John");
-        // pstm.setString(2, "Doe");
-        // pstm.setInt(3, 91282193);
-        // pstm.setString(4, "John.doe@gmail.com");
-        // pstm.setString(5, "1 main street");
-        // connection.commit();
-
-        // } catch (SQLException e) {
-        // e.getMessage();
-        // } finally {
-
-        // try {
-        // // pstm.close();
-        // connection.setAutoCommit(true);
-        // connection.close();
-        // } catch (SQLException ex) {
-        // System.out.println(ex.getMessage());
-        // }
-        // }
-        createGui();
-    }// -------------------------------------------------------------------end main
+    final static Color color1 = new Color(100, 50, 10); // Set Color of all things
+    final static Color color2 = new Color(255, 255, 255); // Set Color of all things
+    final static Color color3 = new Color(50, 20, 10); // Set Color of all things
 
     private JPanel addButtons(JPanel panel, String name) {
 
-        JButton button = new JButton(name);
-        button.addActionListener(this);
-        panel.setBackground(color3);
-        panel.add(button);
+        for (int i = 0; i < buttons.length; i++) {
+            JButton button = new JButton(buttons[i] + " " + name);
+            button.addActionListener(this);
+            panel.setBackground(color3);
+            panel.add(button);
+        }
 
         return panel;
     }
 
     private JPanel addContent(JPanel panel, int i) {
 
-        // Createing a Table
-        String[] customersColumns = {};
-        String[][] customersData = { {} };
-        String[] productsColumns = {};
-        String[][] productsData = { {} };
-        String[] invoicesColumns = {};
-        String[][] invoicesData = { {} };
-
+        // // Creating a Table
         try {
-<<<<<<< Updated upstream:Projekt Blaviken/src/gui/test/main2.java
-            // ------------- Here is where to put the columns and Data from the database
-            /*
-             * customersColumns = {}; customersData = { {} }; productsColumns = {};
-             * productsData = { {} }; invoicesColumns = {}; invoicesData = { {} };
-             */
-
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-=======
             String[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
-            // Object[] customersData = CustomerData.customerData();
+            Object[] customersData = CustomerData.customerData();
             String[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
-            // Object[] productsData = ProductData.productData();
+            Object[] productsData = ProductData.productData();
             String[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
-            // Object[] invoiceData = InvoiceData.invoiceData();
+            Object[] invoiceData = InvoiceData.invoiceData();
         } catch (Exception exep) {
             System.out.println("Error:\n" + exep.getMessage());
->>>>>>> Stashed changes:Projekt Blaviken/src/gui/Gui.java
         }
-        JTable customers = new JTable(customersData, customersColumns);
-        JTable products = new JTable(productsData, productsColumns);
-        JTable invoices = new JTable(invoicesData, invoicesColumns);
+
+        DefaultTableModel customerTable = new DefaultTableModel(customersColumns, 0);
+        // customerTable.addRow(customersData);
+        DefaultTableModel productTable = new DefaultTableModel(productsColumns, 0);
+        // productTable.addRow(productsData);
+        DefaultTableModel invoiceTable = new DefaultTableModel(invoiceColumns, 0);
+        // invoiceTable.addRow(invoiceData);
+
+        JTable customers = new JTable(customerTable);
+        JTable products = new JTable(productTable);
+        JTable invoices = new JTable(invoiceTable);
 
         panel.setBackground(color2);
         if (i == 0) { // Home Page
@@ -168,15 +134,15 @@ public class main2 implements ActionListener {
         pane.add(cards, BorderLayout.CENTER);
     }
 
-    private static void createGui() {
+    public static void createGui() {
 
-        JFrame frame = new JFrame(projectName);// Creat A frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Close uppon close
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);// Start maximised
+        JFrame frame = new JFrame(projectName);// Create A frame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Terminate the program completely on close
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);// Start maximized
         // frame.setIconImage(image);
 
         // Create and set up the content pane.
-        main2 demo = new main2(); // Start the page
+        Gui demo = new Gui(); // Start the page
         demo.createScenes(frame.getContentPane());
 
         frame.setMinimumSize(new Dimension(minDimension[0], minDimension[1]));
@@ -190,4 +156,4 @@ public class main2 implements ActionListener {
 
     }
 
-}// end class
+}
