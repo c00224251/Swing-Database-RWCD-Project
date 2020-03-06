@@ -82,6 +82,7 @@ public class main2 implements ActionListener {
         String[][] invoicesData = { {} };
 
         try {
+<<<<<<< Updated upstream:Projekt Blaviken/src/gui/test/main2.java
             // ------------- Here is where to put the columns and Data from the database
             /*
              * customersColumns = {}; customersData = { {} }; productsColumns = {};
@@ -90,6 +91,16 @@ public class main2 implements ActionListener {
 
         } catch (Exception e) {
             System.out.println("Error: " + e);
+=======
+            String[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
+            // Object[] customersData = CustomerData.customerData();
+            String[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
+            // Object[] productsData = ProductData.productData();
+            String[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+            // Object[] invoiceData = InvoiceData.invoiceData();
+        } catch (Exception exep) {
+            System.out.println("Error:\n" + exep.getMessage());
+>>>>>>> Stashed changes:Projekt Blaviken/src/gui/Gui.java
         }
         JTable customers = new JTable(customersData, customersColumns);
         JTable products = new JTable(productsData, productsColumns);
