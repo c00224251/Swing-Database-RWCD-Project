@@ -1,3 +1,4 @@
+package gui;
 import javax.swing.JOptionPane;
 
 class Popup {

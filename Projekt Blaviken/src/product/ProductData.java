@@ -3,19 +3,19 @@ package product;
 
 public class ProductData
 	{
-		public static Object[] productData()
+		public static Object[][] productData()
 			{
 
-				Object[] productData = new Object[5];
+				Object[][] productData = new Object[ProductArray.getProduct().size()][5];
 
 				for (int i = 0; i < ProductArray.getProduct().size(); i++)
 					{
 
-						productData[0] = ProductArray.getProduct().get(i).getId();
-						productData[1] = ProductArray.getProduct().get(i).getBrand();
-						productData[2] = ProductArray.getProduct().get(i).getModel();
-						productData[3] = ProductArray.getProduct().get(i).getPrice();
-						productData[4] = ProductArray.getProduct().get(i).getDescription();
+						productData[i][0] = ProductArray.getProduct().get(i).getId();
+						productData[i][1] = ProductArray.getProduct().get(i).getBrand();
+						productData[i][2] = ProductArray.getProduct().get(i).getModel();
+						productData[i][3] = ProductArray.getProduct().get(i).getPrice();
+						productData[i][4] = ProductArray.getProduct().get(i).getDescription();
 					}
 				return productData;
 			}

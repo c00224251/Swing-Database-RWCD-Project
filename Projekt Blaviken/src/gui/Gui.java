@@ -1,4 +1,4 @@
-
+package gui;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import customer.CustomerData;
+import invoice.InvoiceData;
+import product.ProductData;
 
 // import customer.CustomerData;
 // import invoice.InvoiceData;
@@ -49,31 +53,19 @@ class Gui implements ActionListener {
 
     private JPanel addContent(JPanel panel, int i) {
 
-        Object[] customersData = {};
-        Object[] productsData = {};
-        Object[] invoiceData = {};
+
         // // Creating a Table
-        try {
+
             Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
-            customersData = CustomerData.customerData();
+            Object[][] customerData = CustomerData.customerData();
             Object[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
-            productsData = ProductData.productData();
-            Object[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
-            invoiceData = InvoiceData.invoiceData();
-        } catch (Exception exep) {
-            System.out.println("Error:\n" + exep.getMessage());
-        }
+            Object[][] productData = ProductData.productData();
+            Object[] invoicesColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+            Object[][] invoiceData = InvoiceData.invoiceData();
 
-        DefaultTableModel customerTable = new DefaultTableModel(customersData, 0);
-        customerTable.addRow(customersData);
-        DefaultTableModel productTable = new DefaultTableModel(productsData, 0);
-        productTable.addRow(productsData);
-        DefaultTableModel invoiceTable = new DefaultTableModel(invoiceData, 0);
-        invoiceTable.addRow(invoiceData);
-
-        JTable customers = new JTable(customerTable);
-        JTable products = new JTable(productTable);
-        JTable invoices = new JTable(invoiceTable);
+        JTable customers = new JTable(customerData, customersColumns);
+        JTable products = new JTable(productData, productsColumns);
+        JTable invoices = new JTable(invoiceData, invoicesColumns);
 
         panel.setBackground(color2);
         if (i == 0) { // Home Page
