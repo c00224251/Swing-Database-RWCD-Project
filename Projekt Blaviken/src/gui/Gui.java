@@ -49,6 +49,9 @@ class Gui implements ActionListener {
 
     private JPanel addContent(JPanel panel, int i) {
 
+        Object[] customersData = {};
+        Object[] productsData = {};
+        Object[] invoiceData = {};
         // // Creating a Table
         try {
             Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
@@ -61,12 +64,6 @@ class Gui implements ActionListener {
             System.out.println("Error:\n" + exep.getMessage());
         }
 
-        DefaultTableModel customerTable = new DefaultTableModel(customersColumns, 0);
-        // customerTable.addRow(customersData);
-        DefaultTableModel productTable = new DefaultTableModel(productsColumns, 0);
-        // productTable.addRow(productsData);
-        DefaultTableModel invoiceTable = new DefaultTableModel(invoiceColumns, 0);
-        // invoiceTable.addRow(invoiceData);
         DefaultTableModel customerTable = new DefaultTableModel(customersData, 0);
         customerTable.addRow(customersData);
         DefaultTableModel productTable = new DefaultTableModel(productsData, 0);
