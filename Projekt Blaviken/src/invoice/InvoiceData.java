@@ -6,7 +6,7 @@ public class InvoiceData
 		public static Object[][] invoiceData()
 			{
 
-				Object[][] invoiceData = new Object[InvoiceArray.getInvoice().size()][];
+				Object[][] invoiceData = new Object[InvoiceArray.getInvoice().size()][5];
 
 				for (int i = 0; i < InvoiceArray.getInvoice().size(); i++)
 					{

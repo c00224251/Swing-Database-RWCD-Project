@@ -1,4 +1,5 @@
 package gui;
+
 /*
 
     By:             
@@ -7,10 +8,12 @@ package gui;
     Date Ended:     []/02/2020
 
  */
-public class main {
+public class main
+	{
 
-    public static void main(String[] args) {
-        Gui.createGui();
-    }// -------------------------------------------------------------------end main
+		public static void main(String[] args)
+			{
+				Gui.createGui();
+			}// -------------------------------------------------------------------end main
 
-}// end class
+	}// end class

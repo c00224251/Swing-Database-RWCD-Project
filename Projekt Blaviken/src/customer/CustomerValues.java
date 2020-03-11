@@ -49,4 +49,34 @@ public class CustomerValues
 				return address;
 			}
 
+		protected void setId(int id)
+			{
+				this.id = id;
+			}
+
+		protected void setFname(String fname)
+			{
+				this.fname = fname;
+			}
+
+		protected void setLname(String lname)
+			{
+				this.lname = lname;
+			}
+
+		protected void setNumber(int number)
+			{
+				this.number = number;
+			}
+
+		protected void setEmail(String email)
+			{
+				this.email = email;
+			}
+
+		protected void setAddress(String address)
+			{
+				this.address = address;
+			}
+
 	}

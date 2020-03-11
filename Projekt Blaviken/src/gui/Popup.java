@@ -1,7 +1,7 @@
 package gui;
 import javax.swing.JOptionPane;
 
-class Popup {
+public class Popup {
 
     public static void information(String message) {
         JOptionPane.showMessageDialog(null, message, "Information", JOptionPane.INFORMATION_MESSAGE);

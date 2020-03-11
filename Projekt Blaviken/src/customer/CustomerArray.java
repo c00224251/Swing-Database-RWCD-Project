@@ -31,9 +31,9 @@ public class CustomerArray
 							{
 								c = new CustomerValues(
 														rs.getInt("id"), 
-														rs.getString("fname"), 
-														rs.getString("lname"),
-														rs.getInt("number"),
+														rs.getString("first_name"), 
+														rs.getString("last_name"),
+														rs.getInt("phone_no"),
 														rs.getString("email"),
 														rs.getString("address")
 													 );

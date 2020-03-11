@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import db.DBConnect;
+import gui.Connector;
 import gui.main;
 
 public class ProductArray
@@ -26,7 +27,7 @@ public class ProductArray
 				try
 					{
 						st = con.createStatement(); // creates Statement object allowing us to send SQL Statements
-						rs = st.executeQuery("SELECT * FROM Customer"); // Executes SQL Statement, returning ResultSet object(data returned by Statement)
+						rs = st.executeQuery("SELECT * FROM Product"); // Executes SQL Statement, returning ResultSet object(data returned by Statement)
 						//ResultSet selects the data at position 0. SQL Tables begin at 1
 						while (rs.next()) // moves to next row and retrieves the values
 							{

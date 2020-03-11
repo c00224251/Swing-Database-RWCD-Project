@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Connector {
 
-	private static final String CONN = "jdbc:mysql:/candept.com:3306/PROJ3CT";
-	private static final String USER = "PROJ3CT";
-	private static final String PW = "password";
+	private static final String CONN = "jdbc:mysql://localhost:3306/proj3kt";
+	private static final String USER = "root";
+	private static final String PW = "";
 
 	public static Connection getConnection() {
 

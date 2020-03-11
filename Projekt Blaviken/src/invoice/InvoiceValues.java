@@ -44,4 +44,29 @@ public class InvoiceValues
 				return price;
 			}
 
+		protected void setId(int id)
+			{
+				this.id = id;
+			}
+
+		protected void setCustomerId(int customerId)
+			{
+				this.customerId = customerId;
+			}
+
+		protected void setProductId(int productId)
+			{
+				this.productId = productId;
+			}
+
+		protected void setDate(Date date)
+			{
+				this.date = date;
+			}
+
+		protected void setPrice(int price)
+			{
+				this.price = price;
+			}
+
 	}
