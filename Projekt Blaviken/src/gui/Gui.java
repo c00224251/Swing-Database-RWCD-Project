@@ -18,9 +18,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-//import customer.CustomerData;
-//import invoice.InvoiceData;
-//import product.ProductData;
+// import customer.CustomerData;
+// import invoice.InvoiceData;
+// import product.ProductData;
 
 class Gui implements ActionListener {
 
@@ -51,12 +51,12 @@ class Gui implements ActionListener {
 
         // // Creating a Table
         try {
-            String[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
-            Object[] customersData = CustomerData.customerData();
-            String[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
-            Object[] productsData = ProductData.productData();
-            String[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
-            Object[] invoiceData = InvoiceData.invoiceData();
+            Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
+            customersData = CustomerData.customerData();
+            Object[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
+            productsData = ProductData.productData();
+            Object[] invoiceColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+            invoiceData = InvoiceData.invoiceData();
         } catch (Exception exep) {
             System.out.println("Error:\n" + exep.getMessage());
         }
@@ -67,6 +67,12 @@ class Gui implements ActionListener {
         // productTable.addRow(productsData);
         DefaultTableModel invoiceTable = new DefaultTableModel(invoiceColumns, 0);
         // invoiceTable.addRow(invoiceData);
+        DefaultTableModel customerTable = new DefaultTableModel(customersData, 0);
+        customerTable.addRow(customersData);
+        DefaultTableModel productTable = new DefaultTableModel(productsData, 0);
+        productTable.addRow(productsData);
+        DefaultTableModel invoiceTable = new DefaultTableModel(invoiceData, 0);
+        invoiceTable.addRow(invoiceData);
 
         JTable customers = new JTable(customerTable);
         JTable products = new JTable(productTable);
@@ -154,6 +160,26 @@ class Gui implements ActionListener {
         CardLayout cl = (CardLayout) (cards.getLayout());
         cl.show(cards, e.getActionCommand());
 
+        String buttonLabel = e.getActionCommand();
+        if (buttonLabel.equals("Add Customer")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Delete Customer")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Edit Customer")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Delete Product")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Edit Product")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Add Product")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Add Invoice")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Delete Invoice")) {
+            Popup.information("Works!");
+        } else if (buttonLabel.equals("Edit Invoice")) {
+            Popup.information("Works!");
+        }
     }
 
 }
