@@ -10,33 +10,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import customer.Customer;
+import product.Product;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddProductGui extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddProductGui frame = new AddProductGui();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AddProductGui frame = new AddProductGui();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
 	public AddProductGui() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,13 +74,45 @@ public class AddProductGui extends JFrame {
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.setBounds(112, 227, 89, 23);
+		btnNewButton.addActionListener(new ActionListener()
+
+			{
+
+				public void actionPerformed(ActionEvent e)
+					{
+						Product.AddProduct
+							(
+								textField.getText(), 
+								textField_1.getText(),
+								Integer.parseInt(textField_2.getText()), 
+								textField_3.getText()
+							);
+						setVisible(false);
+					}
+			});
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.setBounds(222, 227, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener()
+			{
+
+				public void actionPerformed(ActionEvent e)
+					{
+						setVisible(false);
+					}
+			});
 		contentPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener()
+			{
+
+				public void actionPerformed(ActionEvent e)
+					{
+						setVisible(false);
+					}
+			});
 		
-		JTextField textField = new JTextField();
+		textField = new JTextField();
 		textField.setBounds(225, 20, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
