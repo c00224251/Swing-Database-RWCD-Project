@@ -1,6 +1,7 @@
 
 package invoice;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import db.DBConnect;
-import gui.Connector;
 import gui.main;
 
 public class InvoiceArray
@@ -27,7 +27,7 @@ public class InvoiceArray
 				try
 					{
 						st = con.createStatement(); // creates Statement object allowing us to send SQL Statements
-						rs = st.executeQuery("SELECT * FROM Invoice"); // Executes SQL Statement, returning ResultSet object(data returned by Statement)
+						rs = st.executeQuery("SELECT * FROM Invoice WHERE del = 0"); // Executes SQL Statement, returning ResultSet object(data returned by Statement)
 						//ResultSet selects the data at position 0. SQL Tables begin at 1
 						while (rs.next()) // moves to next row and retrieves the values
 							{

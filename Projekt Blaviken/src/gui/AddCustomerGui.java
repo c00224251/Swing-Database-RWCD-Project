@@ -1,8 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +13,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class AddCustomerGui extends JFrame
 	{
 
@@ -99,7 +97,6 @@ public class AddCustomerGui extends JFrame
 				btnNewButton_1.setBounds(222, 227, 89, 23);
 				btnNewButton_1.addActionListener(new ActionListener()
 					{
-
 						public void actionPerformed(ActionEvent e)
 							{
 								setVisible(false);

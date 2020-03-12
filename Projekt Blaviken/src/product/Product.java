@@ -2,7 +2,6 @@ package product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,7 @@ public class Product
 
 				try
 					{
-						st = con.prepareStatement("INSERT INTO Product (brand,model,price,description) VALUES (?,?,?,?)"); // creates Statement object allowing us to send SQL Statements
+						st = con.prepareStatement("INSERT INTO Product (brand,model,price,description, del) VALUES (?,?,?,?,0)"); // creates Statement object allowing us to send SQL Statements
 						st.setString(1, brand);
 						st.setString(2, model);
 						st.setInt(3, price);
@@ -45,7 +44,7 @@ public class Product
 
 				try
 					{
-						st = con.prepareStatement("UPDATE Product SET brand = ?, model = ?, price = ?, description = ?, WHERE id = " + id + ";"); // creates Statement object allowing us to send SQL Statements
+						st = con.prepareStatement("UPDATE Product SET brand = ?, model = ?, price = ?, description = ? WHERE id = " + id + ";"); // creates Statement object allowing us to send SQL Statements
 						st.setString(1, brand);
 						st.setString(2, model);
 						st.setInt(3, price);

@@ -9,9 +9,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -25,6 +22,7 @@ import javax.swing.ListSelectionModel;
 import customer.Customer;
 import customer.CustomerData;
 import invoice.InvoiceData;
+import product.Product;
 import product.ProductData;
 
 // import customer.CustomerData;
@@ -62,6 +60,7 @@ class Gui implements ActionListener
 				return panel;
 			}
 
+		@SuppressWarnings("serial")
 		private void initContent()
 			{
 				Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
@@ -98,59 +97,6 @@ class Gui implements ActionListener
 				invoices.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				customers.setRowSelectionAllowed(true);
 				customers.setSelectionBackground(Color.pink);
-
-//				customers.addMouseListener(new MouseListener()
-//					{
-//
-//						@Override
-//						public void mouseClicked(MouseEvent e)
-//							{
-//								// TODO Auto-generated method stub
-//
-//							}
-//
-//						@Override
-//						public void mousePressed(MouseEvent e)
-//							{
-//								// TODO Auto-generated method stub
-//
-//							}
-//
-//						@Override
-//						public void mouseReleased(MouseEvent e)
-//							{
-//								// TODO Auto-generated method stub
-//								System.out.println(customers.getSelectedRow());
-//							}
-//
-//						@Override
-//						public void mouseEntered(MouseEvent e)
-//							{
-//								// TODO Auto-generated method stub
-//
-//							}
-//
-//						@Override
-//						public void mouseExited(MouseEvent e)
-//							{
-//								// TODO Auto-generated method stub
-//
-//							}
-//					});
-				/*
-				 * customers.addMouseListener(new MouseAdapter() { public void mouseClicked(MouseEvent e) { System.out.println(customers.getSelectedRow()); }
-				 * 
-				 * });
-				 */
-
-				products.addMouseListener(new MouseAdapter()
-					{
-						public void mouseClicked(MouseEvent e)
-							{
-								System.out.println(products.getSelectedRow());
-							}
-
-					});
 			}
 
 		private JPanel addContent(JPanel panel, int i)
@@ -169,8 +115,7 @@ class Gui implements ActionListener
 				if (i == 1)
 					{ // Customers
 						JScrollPane pane = new JScrollPane(customers);
-						pane.revalidate();
-						pane.repaint();
+
 						pane.setBackground(color3);
 						JPanel options = new JPanel();
 						options = addButtons(options, "Customer");
@@ -259,20 +204,46 @@ class Gui implements ActionListener
 						addCustomer.setVisible(true);
 					} else if (buttonLabel.equals("Delete Customer"))
 					{
-						Customer.DeleteCustomer((customers.getValueAt(customers.getSelectedRow(), 0).toString()));
+						if (customers.getSelectedRow() == -1)
+							{
+								Popup.error("Please select a row in the table first");
+							} else
+							{
+								Customer.DeleteCustomer((customers.getValueAt(customers.getSelectedRow(), 0).toString()));
+							}
 					} else if (buttonLabel.equals("Edit Customer"))
 					{
-						EditCustomerGui editCustomer = new EditCustomerGui(customers.getSelectedRow());
-						editCustomer.setVisible(true);
+						if (customers.getSelectedRow() == -1)
+							{
+								Popup.error("Please select a row in the table first");
+							} else
+							{
+								EditCustomerGui editCustomer = new EditCustomerGui(customers.getSelectedRow());
+								editCustomer.setVisible(true);
+							}
 					} else if (buttonLabel.equals("Delete Product"))
 					{
-						Popup.information("Works!");
+						if (products.getSelectedRow() == -1)
+							{
+								Popup.error("Please select a row in the table first");
+							} else
+							{
+								Product.DeleteProduct((products.getValueAt(products.getSelectedRow(), 0).toString()));
+							}
 					} else if (buttonLabel.equals("Edit Product"))
 					{
-						Popup.information("Works!");
+						if (products.getSelectedRow() == -1)
+							{
+								Popup.error("Please select a row in the table first");
+							} else
+							{
+								EditProductGui editProduct = new EditProductGui(products.getSelectedRow());
+								editProduct.setVisible(true);
+							}
 					} else if (buttonLabel.equals("Add Product"))
 					{
-						Popup.information("Works!");
+						AddProductGui addProduct = new AddProductGui();
+						addProduct.setVisible(true);
 					} else if (buttonLabel.equals("Add Invoice"))
 					{
 						Popup.information("Works!");

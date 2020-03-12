@@ -2,7 +2,6 @@ package customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +25,7 @@ public class Customer
 
 				try
 					{
-						st = con.prepareStatement("INSERT INTO Customer (first_name,last_name,phone_no,email,address) VALUES (?,?,?,?,?)"); // creates Statement object allowing us to send SQL Statements
+						st = con.prepareStatement("INSERT INTO Customer (first_name,last_name,phone_no,email,address, del) VALUES (?,?,?,?,?,0)"); // creates Statement object allowing us to send SQL Statements
 						st.setString(1, fname);
 						st.setString(2, lname);
 						st.setInt(3, number);
