@@ -35,8 +35,8 @@ public class InvoiceArray
 														rs.getInt("id"), 
 														rs.getInt("customer_id"), 
 														rs.getInt("product_id"),
-														rs.getDate("date"),
-														rs.getInt("price")
+														rs.getInt("price"),
+														rs.getString("date")
 													 );
 								invoice.add(c); //store data in the ArrayList
 							}

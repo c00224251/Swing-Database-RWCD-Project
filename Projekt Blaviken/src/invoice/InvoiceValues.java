@@ -7,16 +7,16 @@ public class InvoiceValues
 		private int id;
 		private int customerId;
 		private int productId;
-		Date date = new Date();
+		private String date;
 		private int price;
 
-		protected InvoiceValues(int id, int customerId, int productId, Date date, int price)
+		protected InvoiceValues(int id, int customerId, int productId, int price, String date)
 			{
 				this.id = id;
 				this.customerId = customerId;
 				this.productId = productId;
-				this.date = date;
 				this.price = price;
+				this.date = date;
 			}
 
 		protected int getId()
@@ -34,7 +34,7 @@ public class InvoiceValues
 				return productId;
 			}
 
-		protected Date getDate()
+		protected String getDate()
 			{
 				return date;
 			}
@@ -59,7 +59,7 @@ public class InvoiceValues
 				this.productId = productId;
 			}
 
-		protected void setDate(Date date)
+		protected void setDate(String date)
 			{
 				this.date = date;
 			}

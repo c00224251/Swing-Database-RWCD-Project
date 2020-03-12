@@ -21,6 +21,7 @@ import javax.swing.ListSelectionModel;
 
 import customer.Customer;
 import customer.CustomerData;
+import invoice.Invoice;
 import invoice.InvoiceData;
 import product.Product;
 import product.ProductData;
@@ -67,7 +68,7 @@ class Gui implements ActionListener
 				Object[][] customerData = CustomerData.customerData();
 				Object[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
 				Object[][] productData = ProductData.productData();
-				Object[] invoicesColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+				Object[] invoicesColumns = { "ID", "Customer ID", "Product ID", "Price", "Date" };
 				Object[][] invoiceData = InvoiceData.invoiceData();
 
 				customers = new JTable(customerData, customersColumns)
@@ -245,15 +246,29 @@ class Gui implements ActionListener
 						AddProductGui addProduct = new AddProductGui();
 						addProduct.setVisible(true);
 					} else if (buttonLabel.equals("Add Invoice"))
-					{
-						Popup.information("Works!");
-					} else if (buttonLabel.equals("Delete Invoice"))
-					{
-						Popup.information("Works!");
-					} else if (buttonLabel.equals("Edit Invoice"))
-					{
-						Popup.information("Works!");
-					}
+						{
+							AddInvoiceGui addInvoice = new AddInvoiceGui();
+							addInvoice.setVisible(true);
+						} else if (buttonLabel.equals("Delete Invoice"))
+							{
+								if (invoices.getSelectedRow() == -1)
+									{
+										Popup.error("Please select a row in the table first");
+									} else
+									{
+										Invoice.DeleteInvoice((invoices.getValueAt(invoices.getSelectedRow(), 0).toString()));
+									}
+							} else if (buttonLabel.equals("Edit Invoice"))
+						{
+							if (invoices.getSelectedRow() == -1)
+								{
+									Popup.error("Please select a row in the table first");
+								} else
+								{
+									EditInvoiceGui editInvoice = new EditInvoiceGui(invoices.getSelectedRow());
+									editInvoice.setVisible(true);
+								}
+						}
 			}
 
 	}
