@@ -1,7 +1,5 @@
 package invoice;
 
-import java.util.Date;
-
 public class InvoiceValues
 	{
 		private int id;
