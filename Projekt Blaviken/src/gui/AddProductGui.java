@@ -1,18 +1,20 @@
 package gui;
 
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import product.Product;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class AddProductGui extends JFrame {
@@ -21,7 +23,8 @@ public class AddProductGui extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextArea textField_3;
+	private JScrollPane description;
 
 	/**
 	 * Launch the application.
@@ -124,9 +127,11 @@ public class AddProductGui extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(225, 140, 160, 70);
-		contentPane.add(textField_3);
+		textField_3 = new JTextArea(5, 12);
+		description = new JScrollPane(textField_3);
+		description.setBounds(225, 140, 160, 70);
+		textField_3.setLineWrap(true);
+		contentPane.add(description);
 		textField_3.setColumns(10);
 	}
 }
