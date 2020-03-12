@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import customer.AddCustomer;
+import customer.Customer;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -42,7 +42,6 @@ public class AddCustomerGui extends JFrame
 		 */
 		public AddCustomerGui()
 			{
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				setBounds(100, 100, 450, 300);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,7 +82,7 @@ public class AddCustomerGui extends JFrame
 
 						public void actionPerformed(ActionEvent e)
 							{
-								AddCustomer.AddCustomer
+								Customer.AddCustomer
 									(
 										textField.getText(), 
 										textField_1.getText(),

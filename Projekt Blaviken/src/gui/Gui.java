@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import customer.Customer;
 import customer.CustomerData;
 import invoice.InvoiceData;
 import product.ProductData;
@@ -60,97 +61,102 @@ class Gui implements ActionListener
 
 				return panel;
 			}
-		
-		private void initContent() 
-		{
-			Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
-			Object[][] customerData = CustomerData.customerData();
-			Object[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
-			Object[][] productData = ProductData.productData();
-			Object[] invoicesColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
-			Object[][] invoiceData = InvoiceData.invoiceData();
 
-			customers = new JTable(customerData, customersColumns);
-			products = new JTable(productData, productsColumns)
-				{
-					public boolean isCellEditable(int row, int column)
-						{
-							return false;
-						}
-				};
-			invoices = new JTable(invoiceData, invoicesColumns)
-				{
-					public boolean isCellEditable(int row, int column)
-						{
-							return false;
-						}
-				};
+		private void initContent()
+			{
+				Object[] customersColumns = { "ID", "First Name", "Last Name", "Phone Number", "Email", "Address" };
+				Object[][] customerData = CustomerData.customerData();
+				Object[] productsColumns = { "ID", "Brand", "Model", "Price", "Description" };
+				Object[][] productData = ProductData.productData();
+				Object[] invoicesColumns = { "ID", "Customer ID", "Product ID", "Date", "Price" };
+				Object[][] invoiceData = InvoiceData.invoiceData();
 
-			customers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			products.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			invoices.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			customers.setRowSelectionAllowed(true);
-			customers.setSelectionBackground(Color.pink);
-			
+				customers = new JTable(customerData, customersColumns)
+					{
+						public boolean isCellEditable(int row, int column)
+							{
+								return false;
+							}
+					};
+				products = new JTable(productData, productsColumns)
+					{
+						public boolean isCellEditable(int row, int column)
+							{
+								return false;
+							}
+					};
+				invoices = new JTable(invoiceData, invoicesColumns)
+					{
+						public boolean isCellEditable(int row, int column)
+							{
+								return false;
+							}
+					};
 
-			
-			customers.addMouseListener(new MouseListener() {
+				customers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				products.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				invoices.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				customers.setRowSelectionAllowed(true);
+				customers.setSelectionBackground(Color.pink);
 
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+//				customers.addMouseListener(new MouseListener()
+//					{
+//
+//						@Override
+//						public void mouseClicked(MouseEvent e)
+//							{
+//								// TODO Auto-generated method stub
+//
+//							}
+//
+//						@Override
+//						public void mousePressed(MouseEvent e)
+//							{
+//								// TODO Auto-generated method stub
+//
+//							}
+//
+//						@Override
+//						public void mouseReleased(MouseEvent e)
+//							{
+//								// TODO Auto-generated method stub
+//								System.out.println(customers.getSelectedRow());
+//							}
+//
+//						@Override
+//						public void mouseEntered(MouseEvent e)
+//							{
+//								// TODO Auto-generated method stub
+//
+//							}
+//
+//						@Override
+//						public void mouseExited(MouseEvent e)
+//							{
+//								// TODO Auto-generated method stub
+//
+//							}
+//					});
+				/*
+				 * customers.addMouseListener(new MouseAdapter() { public void mouseClicked(MouseEvent e) { System.out.println(customers.getSelectedRow()); }
+				 * 
+				 * });
+				 */
 
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+				products.addMouseListener(new MouseAdapter()
+					{
+						public void mouseClicked(MouseEvent e)
+							{
+								System.out.println(products.getSelectedRow());
+							}
 
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					System.out.println(customers.getSelectedRow());
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}});
-			/*customers.addMouseListener(new MouseAdapter()
-				{
-					public void mouseClicked(MouseEvent e)
-						{
-							System.out.println(customers.getSelectedRow());
-						}
-
-				});*/
-		
-			
-			products.addMouseListener(new MouseAdapter()
-				{
-					public void mouseClicked(MouseEvent e)
-						{
-							System.out.println(products.getSelectedRow());
-						}
-
-				});
-		}
+					});
+			}
 
 		private JPanel addContent(JPanel panel, int i)
 			{
 
 				// // Creating a Table
-
-			
 
 				panel.setBackground(color2);
 				if (i == 0)
@@ -213,12 +219,12 @@ class Gui implements ActionListener
 					}
 				cards = new JPanel(new CardLayout());
 				initContent();
-				for (int i = 0; i < 3; i++)
-				{
+				for (int i = 0; i < 4; i++)
+					{
 						JPanel mainPanel = new JPanel();
 						mainPanel = addContent(mainPanel, i);
 						cards.add(mainPanel, mainMenu[i]);
-				}
+					}
 
 				pane.add(panel, BorderLayout.PAGE_START);
 				pane.add(cards, BorderLayout.CENTER);
@@ -253,7 +259,7 @@ class Gui implements ActionListener
 						addCustomer.setVisible(true);
 					} else if (buttonLabel.equals("Delete Customer"))
 					{
-						Popup.information("Works!");
+						Customer.DeleteCustomer((customers.getValueAt(customers.getSelectedRow(), 0).toString()));
 					} else if (buttonLabel.equals("Edit Customer"))
 					{
 						EditCustomerGui editCustomer = new EditCustomerGui(customers.getSelectedRow());

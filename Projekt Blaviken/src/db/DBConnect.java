@@ -10,13 +10,13 @@ import gui.main;
 
 public class DBConnect
 	{
-		public static Connection getConnection() 
+		public static Connection getConnection()
 			{
 				Connection con = null;
-				String url = "jdbc:mysql://localhost:3306/proj3kt"; //insecure connection
+				String url = "jdbc:mysql://localhost:3306/proj3kt"; // insecure connection
 				String user = "root";
-				String password = ""; //password set at installation
-				try //use try to make sure connection turns off when app quits
+				String password = ""; // password set at installation
+				try // use try to make sure connection turns off when app quits
 					{
 						try
 							{
