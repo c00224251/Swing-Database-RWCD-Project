@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import db.DBConnect;
-import gui.main;
+import gui.Driver;
 
 public class ProductArray
 	{
@@ -41,7 +41,7 @@ public class ProductArray
 							}
 					} catch (SQLException ex) //catch exception, display error in terminal
 					{
-						Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				return products;
 			}

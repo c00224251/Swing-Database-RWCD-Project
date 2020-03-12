@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import db.DBConnect;
 import gui.Popup;
-import gui.main;
+import gui.Driver;
 
 //UPDATE table_name
 //SET column1 = value1, column2 = value2, ...
@@ -37,7 +37,7 @@ public class Customer
 
 					} catch (SQLException ex) // catch exception, display error in terminal
 					{
-						Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
 						Popup.information("Error");
 					}
 			}
@@ -61,7 +61,7 @@ public class Customer
 
 					} catch (SQLException ex) // catch exception, display error in terminal
 					{
-						Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
 						Popup.information("Error");
 					}
 			}
@@ -81,7 +81,7 @@ public class Customer
 
 					} catch (SQLException ex) // catch exception, display error in terminal
 					{
-						Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
 						Popup.information("Error");
 					}
 			}

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import gui.main;
+import gui.Driver;
 
 public class DBConnect
 	{
@@ -29,7 +29,7 @@ public class DBConnect
 																				// database using getConnection()
 					} catch (SQLException ex) // in case of exception, log error. Display it in terminal.
 					{
-						Logger.getLogger(main.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+						Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
 					}
 				return con;
 			}
